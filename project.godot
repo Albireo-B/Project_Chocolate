@@ -11,9 +11,14 @@ config_version=5
 [application]
 
 config/name="Project_Chocolate"
+config/version="0.0"
 run/main_scene="uid://8wvpku4ismju"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Assets/2D/icon.svg"
+
+[physics]
+
+jolt_physics_3d/version=""
 
 [rendering]
 

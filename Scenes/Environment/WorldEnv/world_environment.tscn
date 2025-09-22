@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg30g8cqn2crh"]
+
+[ext_resource type="Script" uid="uid://cf8llpbxec8f8" path="res://Scenes/Environment/WorldEnv/world_environment.gd" id="1_wyhsf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wyhsf"]
+
+[sub_resource type="Sky" id="Sky_5712r"]
+sky_material = SubResource("ProceduralSkyMaterial_wyhsf")
+
+[sub_resource type="Environment" id="Environment_laimj"]
+sky = SubResource("Sky_5712r")
+ambient_light_source = 3
+
+[node name="WorldEnvironment" type="WorldEnvironment" node_paths=PackedStringArray("sun")]
+environment = SubResource("Environment_laimj")
+script = ExtResource("1_wyhsf")
+day_cycle_duration = 180.0
+sun = NodePath("DirectionalLight3D")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25.952991, 0)
+shadow_enabled = true
