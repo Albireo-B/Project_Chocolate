@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="IngredientResource" load_steps=3 format=3 uid="uid://dece65a44gmn7"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyg4bx7kdj0oy" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/bottle_C_green.obj" id="1_dbswa"]
+[ext_resource type="Script" uid="uid://gov3igxmsmyf" path="res://Scenes/Environment/Ingredients/IngredientResource.gd" id="2_nk4de"]
+
+[resource]
+script = ExtResource("2_nk4de")
+mesh = ExtResource("1_dbswa")
+metadata/_custom_type_script = "uid://gov3igxmsmyf"

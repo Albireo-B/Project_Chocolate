@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cv5kj5cp46j13"]
+
+[ext_resource type="ArrayMesh" uid="uid://cjtff0y5hpjy7" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/bottle_A_brown.obj" id="1_edh6y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g0sq6"]
+
+[node name="Ingredient" type="Node3D"]
+metadata/mesh_instance = NodePath("Body/Mesh")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+shape = SubResource("BoxShape3D_g0sq6")
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
+mesh = ExtResource("1_edh6y")

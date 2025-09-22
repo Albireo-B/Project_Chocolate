@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=4 uid="uid://by8a4o25clf2b"]
+[gd_scene load_steps=18 format=4 uid="uid://by8a4o25clf2b"]
 
 [ext_resource type="ArrayMesh" uid="uid://u0g7wowg1yxx" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/wall_window_open.obj" id="1_e1mih"]
+[ext_resource type="Script" uid="uid://csuj8fechnjv7" path="res://Scenes/Environment/CoffeeShop/IngredientSpawner.gd" id="1_k3to3"]
+[ext_resource type="PackedScene" uid="uid://cv5kj5cp46j13" path="res://Scenes/Environment/Ingredients/base_ingredient.tscn" id="2_5cy45"]
 [ext_resource type="ArrayMesh" uid="uid://d4imnro3lc86i" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/wall_scaffold.obj" id="2_m66j3"]
+[ext_resource type="Script" uid="uid://gov3igxmsmyf" path="res://Scenes/Environment/Ingredients/IngredientResource.gd" id="3_oolom"]
 [ext_resource type="Texture2D" uid="uid://bhedl6213ljby" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/dungeon_texture.png" id="3_yjgmo"]
+[ext_resource type="Resource" uid="uid://dece65a44gmn7" path="res://Scenes/Environment/Ingredients/dinde.tres" id="4_hsmrw"]
 [ext_resource type="ArrayMesh" uid="uid://c2fkjsrh6v0oa" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/floor_wood_large.obj" id="4_m66j3"]
 [ext_resource type="ArrayMesh" uid="uid://dsvtmphvpi55h" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/wall_doorway.obj" id="4_yjgmo"]
+[ext_resource type="Resource" uid="uid://biko4wau0erhp" path="res://Scenes/Environment/Ingredients/pouler.tres" id="5_vgfeh"]
 [ext_resource type="ArrayMesh" uid="uid://bxko2tp8cinlv" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/table_long_decorated_C.obj" id="6_ru0uo"]
 [ext_resource type="ArrayMesh" uid="uid://caupw5sm1jt8v" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/table_long_decorated_A.obj" id="7_e3msu"]
 [ext_resource type="ArrayMesh" uid="uid://c0d8re7cj54bq" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/table_long.obj" id="8_ksc3y"]
@@ -46,7 +51,11 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_totnr")
 
-[node name="CoffeeShop" type="Node3D"]
+[node name="CoffeeShop" type="Node3D" node_paths=PackedStringArray("spawn_points_holder")]
+script = ExtResource("1_k3to3")
+base_ingredient = ExtResource("2_5cy45")
+ingredient_resources = Array[ExtResource("3_oolom")]([ExtResource("4_hsmrw"), ExtResource("5_vgfeh")])
+spawn_points_holder = NodePath("IngredientsSpawns")
 
 [node name="Walls" type="Node3D" parent="."]
 
@@ -198,3 +207,17 @@ skeleton = NodePath("../..")
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 6, 0, 6)
 mesh = ExtResource("9_e3msu")
 skeleton = NodePath("../..")
+
+[node name="IngredientsSpawns" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="IngredientsSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.462574, 3.0267184, -2)
+metadata/ingredient_index = 0
+
+[node name="Marker3D2" type="Marker3D" parent="IngredientsSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.484916, 3.00119, 6.080383)
+metadata/ingredient_index = 1
+
+[node name="Marker3D3" type="Marker3D" parent="IngredientsSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.484916, 1.590313, 6.080383)
+metadata/ingredient_index = 2

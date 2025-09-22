@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg30g8cqn2crh"]
 
-[ext_resource type="Script" uid="uid://cf8llpbxec8f8" path="res://Scenes/Environment/WorldEnv/world_environment.gd" id="1_wyhsf"]
+[ext_resource type="Script" uid="uid://cf8llpbxec8f8" path="res://Scenes/Environment/WorldEnv/WorldEnvironment.gd" id="1_wyhsf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wyhsf"]
 
