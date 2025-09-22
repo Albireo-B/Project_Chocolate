@@ -11,12 +11,18 @@ sky_material = SubResource("ProceduralSkyMaterial_wyhsf")
 sky = SubResource("Sky_5712r")
 ambient_light_source = 3
 
-[node name="WorldEnvironment" type="WorldEnvironment" node_paths=PackedStringArray("sun")]
+[node name="WorldEnvironment" type="WorldEnvironment" node_paths=PackedStringArray("sun", "moon")]
 environment = SubResource("Environment_laimj")
 script = ExtResource("1_wyhsf")
-day_cycle_duration = 180.0
-sun = NodePath("DirectionalLight3D")
+day_cycle_duration = 20.0
+sun = NodePath("Sun")
+moon = NodePath("Moon")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+[node name="Sun" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25.952991, 0)
+shadow_enabled = true
+
+[node name="Moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 25.952991, 0)
+light_color = Color(0.34901962, 0.5019608, 1, 1)
 shadow_enabled = true
