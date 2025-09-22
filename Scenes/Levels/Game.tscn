@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://8wvpku4ismju"]
+
+[ext_resource type="PackedScene" uid="uid://by8a4o25clf2b" path="res://Scenes/CoffeeShop.tscn" id="1_laimj"]
+
+[node name="GameScene" type="Node3D"]
+
+[node name="CoffeeShop" parent="." instance=ExtResource("1_laimj")]
