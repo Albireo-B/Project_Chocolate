@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dg30g8cqn2crh"]
 
-[ext_resource type="Script" uid="uid://cf8llpbxec8f8" path="res://Scenes/Environment/WorldEnv/WorldEnvironment.gd" id="1_wyhsf"]
+[ext_resource type="Script" uid="uid://cf8llpbxec8f8" path="res://Environment/WorldEnv/WorldEnvironment.gd" id="1_wyhsf"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wyhsf"]
 
@@ -14,7 +14,6 @@ ambient_light_source = 3
 [node name="WorldEnvironment" type="WorldEnvironment" node_paths=PackedStringArray("sun", "moon")]
 environment = SubResource("Environment_laimj")
 script = ExtResource("1_wyhsf")
-day_cycle_duration = 20.0
 sun = NodePath("Sun")
 moon = NodePath("Moon")
 

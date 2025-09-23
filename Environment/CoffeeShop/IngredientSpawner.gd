@@ -11,11 +11,17 @@ func _ready():
 func spawn_ingredient(ingredient_type: IngredientResource.Ingredient):
 	var ingredient_resource = find_ingredient_resource(ingredient_type)
 	var ingredient_spawn = find_ingredient_spawn(ingredient_type)
-	if ingredient_resource && ingredient_spawn:
-		var ingredient_objet = base_ingredient.instantiate()
-		ingredient_objet.get_node(ingredient_objet.get_meta("mesh_instance")).mesh = ingredient_resource.mesh
-		add_child(ingredient_objet)
-		ingredient_objet.global_transform.origin = ingredient_spawn
+	if !ingredient_resource or !ingredient_spawn:
+		return
+		
+	var ingredient_objet = base_ingredient.instantiate()
+	var object_mesh_instance: MeshInstance3D = ingredient_objet.get_node(ingredient_objet.get_meta("mesh_instance"))
+	object_mesh_instance.mesh = ingredient_resource.mesh
+		
+	var object_collision_shape: CollisionShape3D = ingredient_objet.get_node(ingredient_objet.get_meta("collision_shape"))
+	object_collision_shape.shape = object_mesh_instance.mesh.create_convex_shape()
+	ingredient_objet.set_meta("ingredient_index", ingredient_resource.ingredient)
+	ingredient_spawn.add_child(ingredient_objet)
 
 func find_ingredient_resource(ingredient: IngredientResource.Ingredient):
 	for resource in ingredient_resources:
@@ -26,5 +32,5 @@ func find_ingredient_resource(ingredient: IngredientResource.Ingredient):
 func find_ingredient_spawn(ingredient: IngredientResource.Ingredient):
 	for spawn in spawn_points_holder.get_children():
 		if spawn.get_meta("ingredient_index") == ingredient:
-			return spawn.position
+			return spawn
 	return null

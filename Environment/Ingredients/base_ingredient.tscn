@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://cv5kj5cp46j13"]
+
+[ext_resource type="Script" uid="uid://o1c0mxcxkfjq" path="res://Environment/Ingredients/Pickable.gd" id="1_c2fsk"]
+[ext_resource type="ArrayMesh" uid="uid://cjtff0y5hpjy7" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/bottle_A_brown.obj" id="1_edh6y"]
+[ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://Environment/Ingredients/ingredient_outline.tres" id="2_uv2aq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2fsk"]
+
+[node name="Ingredient" type="Node3D"]
+script = ExtResource("1_c2fsk")
+outline_material = ExtResource("2_uv2aq")
+metadata/mesh_instance = NodePath("Body/Mesh")
+metadata/ingredient_index = 0
+metadata/collision_shape = NodePath("Body/Collision")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
+mesh = ExtResource("1_edh6y")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
+shape = SubResource("BoxShape3D_c2fsk")
+
+[connection signal="input_event" from="Body" to="." method="_on_body_input_event"]
+[connection signal="mouse_entered" from="Body" to="." method="_on_body_mouse_entered"]
+[connection signal="mouse_exited" from="Body" to="." method="_on_body_mouse_exited"]

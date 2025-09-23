@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cv5kj5cp46j13"]
+
+[ext_resource type="Script" uid="uid://o1c0mxcxkfjq" path="res://Environment/Ingredients/Pickable.gd" id="1_c2fsk"]
+[ext_resource type="ArrayMesh" uid="uid://cjtff0y5hpjy7" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/bottle_A_brown.obj" id="1_edh6y"]
+[ext_resource type="Shader" uid="uid://bjp0govpyxoum" path="res://Environment/Ingredients/OutlineShader.gdshader" id="2_uv2aq"]
+
+[sub_resource type="Gradient" id="Gradient_uv2aq"]
+offsets = PackedFloat32Array(0, 0.308, 0.64, 1)
+colors = PackedColorArray(0.74725085, 0.4602232, 1.92523e-07, 1, 0.9931955, 0, 0.21956536, 1, 0.16374844, 0.45359975, 1, 1, 0.7490196, 0.45882353, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_sq3xu"]
+gradient = SubResource("Gradient_uv2aq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sq3xu"]
+render_priority = 0
+shader = ExtResource("2_uv2aq")
+shader_parameter/fresnel_power = 2.20300010138262
+shader_parameter/emission_power = 0.0
+shader_parameter/white_lerp = 0.10000000475
+shader_parameter/scroll_speed = 0.2
+shader_parameter/colors_texture = SubResource("GradientTexture1D_sq3xu")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_c2fsk"]
+
+[node name="Ingredient" type="Node3D"]
+script = ExtResource("1_c2fsk")
+metadata/mesh_instance = NodePath("Body/Mesh")
+metadata/ingredient_index = 0
+metadata/collision_shape = NodePath("Body/Collision")
+
+[node name="Body" type="StaticBody3D" parent="."]
+
+[node name="Mesh" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
+material_overlay = SubResource("ShaderMaterial_sq3xu")
+mesh = ExtResource("1_edh6y")
+
+[node name="Collision" type="CollisionShape3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
+shape = SubResource("BoxShape3D_c2fsk")
+
+[connection signal="input_event" from="Body" to="." method="_on_body_input_event"]
+[connection signal="mouse_entered" from="Body" to="." method="_on_body_mouse_entered"]
+[connection signal="mouse_exited" from="Body" to="." method="_on_body_mouse_exited"]
