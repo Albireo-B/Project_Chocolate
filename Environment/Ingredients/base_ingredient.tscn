@@ -6,22 +6,21 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2fsk"]
 
-[node name="Ingredient" type="Node3D" node_paths=PackedStringArray("mesh_instance")]
+[node name="Body" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance")]
 script = ExtResource("1_uv2aq")
 outline_material = ExtResource("1_56e64")
-mesh_instance = NodePath("Body/Mesh")
+mesh_instance = NodePath("Mesh")
 metadata/ingredient_index = 0
-metadata/collision_shape = NodePath("Body/Collision")
+metadata/collision_shape = NodePath("Collision")
+metadata/draggable = true
 
-[node name="Body" type="StaticBody3D" parent="."]
-
-[node name="Mesh" type="MeshInstance3D" parent="Body"]
+[node name="Mesh" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
 mesh = ExtResource("1_edh6y")
 
-[node name="Collision" type="CollisionShape3D" parent="Body"]
+[node name="Collision" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4429894, 0)
 shape = SubResource("BoxShape3D_c2fsk")
 
-[connection signal="mouse_entered" from="Body" to="." method="_on_body_mouse_entered"]
-[connection signal="mouse_exited" from="Body" to="." method="_on_body_mouse_exited"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

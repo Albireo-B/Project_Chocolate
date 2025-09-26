@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://brny7i2usxqa"]
+
+[ext_resource type="ArrayMesh" uid="uid://b5a6bnocaw5y3" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/chest.obj" id="1_udnci"]
+[ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://Environment/Ingredients/ingredient_outline.tres" id="2_nlhno"]
+[ext_resource type="Script" uid="uid://dwvcguisc5fwr" path="res://Environment/CoffeeShop/Cauldron/cauldron.gd" id="2_wks6j"]
+[ext_resource type="ArrayMesh" uid="uid://h5qcphvk53qv" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/plate.obj" id="4_s0d2p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wks6j"]
+size = Vector3(1.7, 0.7, 1.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nlhno"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="Body" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "launcher_mesh_instance")]
+script = ExtResource("2_wks6j")
+outline_material = ExtResource("2_nlhno")
+mesh_instance = NodePath("MeshInstance3D")
+launcher_mesh_instance = NodePath("launcher/MeshInstance3D")
+recipes = {
+0: [0],
+1: [1]
+}
+metadata/on_target = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_udnci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.3305083, 0)
+shape = SubResource("BoxShape3D_wks6j")
+
+[node name="launcher" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.14768243, -0.24509257, 1.6179695)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="launcher"]
+transform = Transform3D(0.54764485, 0, 0, 0, 1, 0, 0, 0, 0.59167075, 0, 0.21770722, 0)
+mesh = ExtResource("4_s0d2p")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="launcher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.31271696, 0)
+shape = SubResource("BoxShape3D_nlhno")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="input_event" from="launcher" to="." method="_on_launcher_input_event"]
+[connection signal="mouse_entered" from="launcher" to="." method="_on_launcher_mouse_entered"]
+[connection signal="mouse_exited" from="launcher" to="." method="_on_launcher_mouse_exited"]

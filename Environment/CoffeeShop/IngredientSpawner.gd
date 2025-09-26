@@ -3,7 +3,6 @@ extends Node3D
 @export var base_ingredient: PackedScene
 @export var ingredient_resources: Array[IngredientResource]
 @export var spawn_points_holder: Node3D
-@export var cauldron: Node3D
 
 func _ready():
 	spawn_ingredient(IngredientResource.Ingredient.PouletDePouletPointFR)
@@ -34,3 +33,7 @@ func find_ingredient_spawn(ingredient: IngredientResource.Ingredient):
 		if spawn.get_meta("ingredient_index") == ingredient:
 			return spawn
 	return null
+
+func _on_cauldron_recipe_ended(ingredients: Array):
+	for ingredient in ingredients:
+		spawn_ingredient(ingredient)

@@ -4,15 +4,15 @@ extends Node3D
 @export var camera: Camera3D
 @export var drag_speed: float = 0.25
 @export var return_speed: float = 0.05
+@export var drop_target_holder: Node3D
 
-var drop_target: Node3D
 var drag_plane: Plane
 var dragged_object: Node3D
-
 var returning_objects: Array[Node3D]
+var drop_target: Node3D
 
 func _ready():
-	drop_target = $"../CoffeeShop".cauldron
+	drop_target = drop_target_holder.get_node(drop_target_holder.get_meta("drop_target"))
 	
 func update_dragged_position():
 	var mouse_pos = get_viewport().get_mouse_position()
@@ -47,8 +47,8 @@ func pickable_clicked(event: InputEvent):
 		raycast.target_position =  raycast.to_local(mouse_ray_end)
 		raycast.force_raycast_update()
 		#DebugDraw3D.draw_sphere(mouse_ray_end, 0.3, Color.RED, 10)
-		if raycast.is_colliding():
-			dragged_object = raycast.get_collider().get_parent()
+		if raycast.is_colliding() && raycast.get_collider().has_meta("draggable"):
+			dragged_object = raycast.get_collider()
 			dragged_object.enable_outline(true)
 			dragged_object.dragged = true
 			if returning_objects.has(dragged_object):
@@ -57,6 +57,14 @@ func pickable_clicked(event: InputEvent):
 			drag_plane = Plane(camera_forward, drop_target.global_position)
 	
 	if event.is_released() && dragged_object:
+		if drop_target.get_meta("on_target"):
+			drop_target.add_ingredient(dragged_object.get_meta("ingredient_index") as IngredientResource.Ingredient)
+			if returning_objects.has(dragged_object):
+				returning_objects.erase(dragged_object)
+				
+			dragged_object.queue_free()
+			return
+		
 		if not returning_objects.has(dragged_object):
 			returning_objects.append(dragged_object)
 		
