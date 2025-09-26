@@ -1,24 +1,22 @@
 extends Node3D
 
 @export var outline_material: ShaderMaterial	
-var mesh_instance: MeshInstance3D
+@export var mesh_instance: MeshInstance3D	
 
-func _ready():
-	mesh_instance = get_node(get_meta("mesh_instance"))
-	
-func _on_body_input_event(camera, event, event_position, normal, shape_idx):
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print("clicking on " + IngredientResource.Ingredient.keys()[get_meta("ingredient_index")])
+var dragged: bool = false
 
 func _on_body_mouse_entered():
-	if !outline_material or !mesh_instance:
-		return
-	
-	mesh_instance.material_overlay = outline_material
+	enable_outline(true)
 
 func _on_body_mouse_exited():
-	if !outline_material or !mesh_instance:
+	enable_outline(false)
+
+func enable_outline(enable: bool):
+	if not mesh_instance or not outline_material:
 		return
-	
-	mesh_instance.material_overlay = null
+		
+	if enable:
+		mesh_instance.material_overlay = outline_material
+	else:
+		if not dragged:
+			mesh_instance.material_overlay = null

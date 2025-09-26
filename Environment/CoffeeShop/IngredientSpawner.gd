@@ -3,6 +3,7 @@ extends Node3D
 @export var base_ingredient: PackedScene
 @export var ingredient_resources: Array[IngredientResource]
 @export var spawn_points_holder: Node3D
+@export var cauldron: Node3D
 
 func _ready():
 	spawn_ingredient(IngredientResource.Ingredient.PouletDePouletPointFR)
@@ -15,11 +16,10 @@ func spawn_ingredient(ingredient_type: IngredientResource.Ingredient):
 		return
 		
 	var ingredient_objet = base_ingredient.instantiate()
-	var object_mesh_instance: MeshInstance3D = ingredient_objet.get_node(ingredient_objet.get_meta("mesh_instance"))
-	object_mesh_instance.mesh = ingredient_resource.mesh
+	ingredient_objet.mesh_instance.mesh = ingredient_resource.mesh
 		
 	var object_collision_shape: CollisionShape3D = ingredient_objet.get_node(ingredient_objet.get_meta("collision_shape"))
-	object_collision_shape.shape = object_mesh_instance.mesh.create_convex_shape()
+	object_collision_shape.shape = ingredient_objet.mesh_instance.mesh.create_convex_shape()
 	ingredient_objet.set_meta("ingredient_index", ingredient_resource.ingredient)
 	ingredient_spawn.add_child(ingredient_objet)
 

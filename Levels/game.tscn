@@ -1,13 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://8wvpku4ismju"]
+[gd_scene load_steps=5 format=3 uid="uid://8wvpku4ismju"]
 
 [ext_resource type="PackedScene" uid="uid://by8a4o25clf2b" path="res://Environment/CoffeeShop/coffee_shop.tscn" id="1_72uep"]
 [ext_resource type="PackedScene" uid="uid://dg30g8cqn2crh" path="res://Environment/WorldEnv/world_environment.tscn" id="2_b2ers"]
+[ext_resource type="Script" uid="uid://o1c0mxcxkfjq" path="res://GlobalScripts/DragDropManager.gd" id="3_6isyr"]
+[ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://Environment/Ingredients/ingredient_outline.tres" id="4_5ubxa"]
 
 [node name="GameScene" type="Node3D"]
 
 [node name="CoffeeShop" parent="." instance=ExtResource("1_72uep")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.021167755, 0, 0.009916306)
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("2_b2ers")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-1, -5.6194278e-08, 6.696976e-08, -1.4463525e-08, 0.8618329, 0.50719243, -8.621805e-08, 0.50719243, -0.8618329, 0, 7.367698, -4.8282194)
+transform = Transform3D(-0.76534855, 0.3264372, -0.55468947, -1.4463519e-08, 0.8618328, 0.50719243, 0.6436161, 0.388179, -0.65960246, -3.4633029, 6.0354176, -4.8282194)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
+collide_with_areas = true
+
+[node name="DragDropManager" type="Node3D" parent="." node_paths=PackedStringArray("raycast", "camera")]
+script = ExtResource("3_6isyr")
+outline_material = ExtResource("4_5ubxa")
+raycast = NodePath("../Camera3D/RayCast3D")
+camera = NodePath("../Camera3D")
