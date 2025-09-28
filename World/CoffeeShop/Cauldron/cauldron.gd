@@ -6,9 +6,9 @@ signal recipe_ended(Array)
 @export var mesh_instance: MeshInstance3D	
 @export var launcher_mesh_instance: MeshInstance3D	
 # Dictionary[int, Array[IngredientResource.Ingredient]]
-@export var recipes: Dictionary
+@export var recipes: Array[Recipe]
 
-var ingredients: Array[IngredientResource.Ingredient]
+var ingredients: Array[Ingredient.IngredientType]
 
 func _on_mouse_entered():
 	if mesh_instance and outline_material:
@@ -27,10 +27,16 @@ func launch_recipe():
 	if ingredients.is_empty():
 		return
 	
-	var recipe_index = recipes.values().find(ingredients)
-	if recipe_index != -1:
+	var recipe_index: int = -1
+	for recipe in recipes:
+		if recipe.ingredients == ingredients:
+			recipe_index = recipes.find(recipe)
+			print("Found recipe : " + recipe.name + " with  index : " + str(recipe_index))
+			break
+			
+	if recipe_index == -1:
 		#TODO : Recipe done
-		print("Found recipe with index : " + str(recipe_index))
+		print("No recipe found")
 		
 	recipe_ended.emit(ingredients)
 	ingredients.clear()

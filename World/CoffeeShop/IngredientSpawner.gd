@@ -1,14 +1,14 @@
 extends Node3D
 
 @export var base_ingredient: PackedScene
-@export var ingredient_resources: Array[IngredientResource]
+@export var ingredient_resources: Array[Ingredient]
 @export var spawn_points_holder: Node3D
 
 func _ready():
-	spawn_ingredient(IngredientResource.Ingredient.PouletDePouletPointFR)
-	spawn_ingredient(IngredientResource.Ingredient.DindeRotieDeHubert)
+	spawn_ingredient(Ingredient.IngredientType.PouletDePouletPointFR)
+	spawn_ingredient(Ingredient.IngredientType.DindeRotieDeHubert)
 	
-func spawn_ingredient(ingredient_type: IngredientResource.Ingredient):
+func spawn_ingredient(ingredient_type: Ingredient.IngredientType):
 	var ingredient_resource = find_ingredient_resource(ingredient_type)
 	var ingredient_spawn = find_ingredient_spawn(ingredient_type)
 	if !ingredient_resource or !ingredient_spawn:
@@ -22,13 +22,13 @@ func spawn_ingredient(ingredient_type: IngredientResource.Ingredient):
 	ingredient_objet.set_meta("ingredient_index", ingredient_resource.ingredient)
 	ingredient_spawn.add_child(ingredient_objet)
 
-func find_ingredient_resource(ingredient: IngredientResource.Ingredient):
+func find_ingredient_resource(ingredient: Ingredient.IngredientType):
 	for resource in ingredient_resources:
 		if resource.ingredient == ingredient:
 			return resource
 	return null
 	
-func find_ingredient_spawn(ingredient: IngredientResource.Ingredient):
+func find_ingredient_spawn(ingredient: Ingredient.IngredientType):
 	for spawn in spawn_points_holder.get_children():
 		if spawn.get_meta("ingredient_index") == ingredient:
 			return spawn

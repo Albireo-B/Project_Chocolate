@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cv5kj5cp46j13"]
 
-[ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://Environment/Ingredients/ingredient_outline.tres" id="1_56e64"]
+[ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://World/Ingredients/ingredient_outline.tres" id="1_56e64"]
 [ext_resource type="ArrayMesh" uid="uid://cjtff0y5hpjy7" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/bottle_A_brown.obj" id="1_edh6y"]
-[ext_resource type="Script" uid="uid://bo0akttn4iyr2" path="res://Environment/Ingredients/Pickable.gd" id="1_uv2aq"]
+[ext_resource type="Script" uid="uid://bo0akttn4iyr2" path="res://World/Ingredients/Pickable.gd" id="1_uv2aq"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_c2fsk"]
 

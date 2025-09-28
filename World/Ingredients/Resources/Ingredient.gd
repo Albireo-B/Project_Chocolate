@@ -1,11 +1,11 @@
-class_name IngredientResource
+class_name Ingredient
 extends Resource
 
-enum Ingredient
+enum IngredientType
 {
 	PouletDePouletPointFR,
 	DindeRotieDeHubert
 }
 
-@export var ingredient : Ingredient
+@export var ingredient : IngredientType
 @export var mesh: Mesh

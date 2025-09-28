@@ -58,7 +58,7 @@ func pickable_clicked(event: InputEvent):
 	
 	if event.is_released() && dragged_object:
 		if drop_target.get_meta("on_target"):
-			drop_target.add_ingredient(dragged_object.get_meta("ingredient_index") as IngredientResource.Ingredient)
+			drop_target.add_ingredient(dragged_object.get_meta("ingredient_index") as Ingredient.IngredientType)
 			if returning_objects.has(dragged_object):
 				returning_objects.erase(dragged_object)
 				
