@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://8wvpku4ismju"]
+[gd_scene load_steps=9 format=3 uid="uid://8wvpku4ismju"]
 
 [ext_resource type="PackedScene" uid="uid://by8a4o25clf2b" path="res://World/CoffeeShop/coffee_shop.tscn" id="1_72uep"]
 [ext_resource type="PackedScene" uid="uid://dg30g8cqn2crh" path="res://World/WorldEnv/world_environment.tscn" id="2_b2ers"]
 [ext_resource type="Script" uid="uid://o1c0mxcxkfjq" path="res://GlobalScripts/DragDropManager.gd" id="3_6isyr"]
+[ext_resource type="Script" uid="uid://cift1yfwbvfx6" path="res://World/Recipes/RecipeManager.gd" id="4_5ubxa"]
+[ext_resource type="Script" uid="uid://m8e85vgq6lbv" path="res://World/Recipes/Resources/Recipe.gd" id="5_ev4ff"]
+[ext_resource type="Resource" uid="uid://csrld0ghtsong" path="res://World/Recipes/Resources/test2.tres" id="6_xfsjo"]
+[ext_resource type="Resource" uid="uid://cb0a4rhbu8vog" path="res://World/Recipes/Resources/test.tres" id="7_qe8hq"]
+[ext_resource type="Resource" uid="uid://bftwxrmnkpsar" path="res://World/Recipes/Resources/new_resource.tres" id="8_xfsjo"]
 
 [node name="GameScene" type="Node3D"]
 
@@ -22,3 +27,9 @@ script = ExtResource("3_6isyr")
 raycast = NodePath("../Camera3D/RayCast3D")
 camera = NodePath("../Camera3D")
 drop_target_holder = NodePath("../CoffeeShop")
+
+[node name="RecipeManager" type="Node3D" parent="." node_paths=PackedStringArray("ingredient_spawner")]
+script = ExtResource("4_5ubxa")
+all_recipes = Array[ExtResource("5_ev4ff")]([ExtResource("6_xfsjo"), ExtResource("7_qe8hq"), ExtResource("8_xfsjo")])
+unlocked_ingredients = Array[int]([0, 1])
+ingredient_spawner = NodePath("../CoffeeShop")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=4 uid="uid://by8a4o25clf2b"]
+[gd_scene load_steps=19 format=4 uid="uid://by8a4o25clf2b"]
 
 [ext_resource type="ArrayMesh" uid="uid://u0g7wowg1yxx" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/wall_window_open.obj" id="1_e1mih"]
 [ext_resource type="Script" uid="uid://csuj8fechnjv7" path="res://World/CoffeeShop/IngredientSpawner.gd" id="1_k3to3"]
@@ -15,8 +15,6 @@
 [ext_resource type="ArrayMesh" uid="uid://c0d8re7cj54bq" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/table_long.obj" id="8_ksc3y"]
 [ext_resource type="ArrayMesh" uid="uid://cmxxdu8hh07ag" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/shelves.obj" id="9_e3msu"]
 [ext_resource type="PackedScene" uid="uid://brny7i2usxqa" path="res://World/CoffeeShop/Cauldron/cauldron.tscn" id="14_kgjos"]
-[ext_resource type="Script" uid="uid://m8e85vgq6lbv" path="res://World/Recipes/Resources/Recipe.gd" id="15_uyqeg"]
-[ext_resource type="Resource" uid="uid://cb0a4rhbu8vog" path="res://World/Recipes/Resources/test.tres" id="16_r6o7s"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5ktu"]
 resource_name = "texture"
@@ -200,7 +198,6 @@ skeleton = NodePath("../..")
 
 [node name="Cauldron" parent="Desk" instance=ExtResource("14_kgjos")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4630597, 1.1429672, 0.87271214)
-recipes = Array[ExtResource("15_uyqeg")]([ExtResource("16_r6o7s")])
 
 [node name="Props" type="Node3D" parent="."]
 
@@ -229,5 +226,3 @@ metadata/ingredient_index = 1
 [node name="Marker3D3" type="Marker3D" parent="IngredientsSpawns"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.484916, 1.590313, 6.080383)
 metadata/ingredient_index = 2
-
-[connection signal="recipe_ended" from="Desk/Cauldron" to="." method="_on_cauldron_recipe_ended"]

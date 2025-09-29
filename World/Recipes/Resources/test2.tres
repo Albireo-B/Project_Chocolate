@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Recipe" load_steps=2 format=3 uid="uid://csrld0ghtsong"]
+
+[ext_resource type="Script" uid="uid://m8e85vgq6lbv" path="res://World/Recipes/Resources/Recipe.gd" id="1_wreox"]
+
+[resource]
+script = ExtResource("1_wreox")
+name = "recette 2"
+ingredients = Array[int]([1])
+metadata/_custom_type_script = "uid://m8e85vgq6lbv"

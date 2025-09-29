@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_2y1fk")
 name = "Assortiment spécial"
-ingredients = Array[int]([0, 1])
+ingredients = Array[int]([0])
 metadata/_custom_type_script = "uid://m8e85vgq6lbv"

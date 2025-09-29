@@ -16,6 +16,10 @@ run/main_scene="uid://8wvpku4ismju"
 config/features=PackedStringArray("4.5", "Mobile")
 config/icon="res://Assets/2D/icon.svg"
 
+[autoload]
+
+SignalManager="*res://GlobalScripts/SignalManager.gd"
+
 [debug_draw_3d]
 
 settings/addon_root_folder="res://addons/debug_draw_3d"

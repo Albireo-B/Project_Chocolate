@@ -1,12 +1,8 @@
 extends Node3D
 
-signal recipe_ended(Array)
-
 @export var outline_material: ShaderMaterial	
 @export var mesh_instance: MeshInstance3D	
 @export var launcher_mesh_instance: MeshInstance3D	
-# Dictionary[int, Array[IngredientResource.Ingredient]]
-@export var recipes: Array[Recipe]
 
 var ingredients: Array[Ingredient.IngredientType]
 
@@ -26,19 +22,8 @@ func add_ingredient(ingredient):
 func launch_recipe():
 	if ingredients.is_empty():
 		return
-	
-	var recipe_index: int = -1
-	for recipe in recipes:
-		if recipe.ingredients == ingredients:
-			recipe_index = recipes.find(recipe)
-			print("Found recipe : " + recipe.name + " with  index : " + str(recipe_index))
-			break
-			
-	if recipe_index == -1:
-		#TODO : Recipe done
-		print("No recipe found")
 		
-	recipe_ended.emit(ingredients)
+	SignalManager.recipe_ended.emit(ingredients)
 	ingredients.clear()
 
 func _on_launcher_input_event(camera, event, event_position, normal, shape_idx):
