@@ -1,13 +1,19 @@
-[gd_scene load_steps=9 format=3 uid="uid://8wvpku4ismju"]
+[gd_scene load_steps=15 format=3 uid="uid://8wvpku4ismju"]
 
 [ext_resource type="PackedScene" uid="uid://by8a4o25clf2b" path="res://World/CoffeeShop/coffee_shop.tscn" id="1_72uep"]
 [ext_resource type="PackedScene" uid="uid://dg30g8cqn2crh" path="res://World/WorldEnv/world_environment.tscn" id="2_b2ers"]
 [ext_resource type="Script" uid="uid://o1c0mxcxkfjq" path="res://GlobalScripts/DragDropManager.gd" id="3_6isyr"]
 [ext_resource type="Script" uid="uid://cift1yfwbvfx6" path="res://World/Recipes/RecipeManager.gd" id="4_5ubxa"]
+[ext_resource type="Script" uid="uid://gov3igxmsmyf" path="res://World/Ingredients/Resources/Ingredient.gd" id="5_40bat"]
 [ext_resource type="Script" uid="uid://m8e85vgq6lbv" path="res://World/Recipes/Resources/Recipe.gd" id="5_ev4ff"]
+[ext_resource type="Resource" uid="uid://dece65a44gmn7" path="res://World/Ingredients/Resources/dinde.tres" id="6_vt8gr"]
 [ext_resource type="Resource" uid="uid://csrld0ghtsong" path="res://World/Recipes/Resources/test2.tres" id="6_xfsjo"]
+[ext_resource type="Resource" uid="uid://biko4wau0erhp" path="res://World/Ingredients/Resources/pouler.tres" id="7_nt8yr"]
 [ext_resource type="Resource" uid="uid://cb0a4rhbu8vog" path="res://World/Recipes/Resources/test.tres" id="7_qe8hq"]
 [ext_resource type="Resource" uid="uid://bftwxrmnkpsar" path="res://World/Recipes/Resources/new_resource.tres" id="8_xfsjo"]
+[ext_resource type="PackedScene" uid="uid://cmykmd4omhsnp" path="res://World/Player/player.tscn" id="9_qe8hq"]
+[ext_resource type="Script" uid="uid://bgto5xgh4b1n4" path="res://World/Player/Player.gd" id="10_fiyor"]
+[ext_resource type="Script" uid="uid://cxv0wnptfby86" path="res://World/Shop/Shop.gd" id="11_7apmo"]
 
 [node name="GameScene" type="Node3D"]
 
@@ -30,6 +36,67 @@ drop_target_holder = NodePath("../CoffeeShop")
 
 [node name="RecipeManager" type="Node3D" parent="." node_paths=PackedStringArray("ingredient_spawner")]
 script = ExtResource("4_5ubxa")
+all_ingredients = Array[ExtResource("5_40bat")]([ExtResource("6_vt8gr"), ExtResource("7_nt8yr")])
 all_recipes = Array[ExtResource("5_ev4ff")]([ExtResource("6_xfsjo"), ExtResource("7_qe8hq"), ExtResource("8_xfsjo")])
-unlocked_ingredients = Array[int]([0, 1])
 ingredient_spawner = NodePath("../CoffeeShop")
+
+[node name="Player" parent="." instance=ExtResource("9_qe8hq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.0289388, 0, 1.408104)
+script = ExtResource("10_fiyor")
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="HUD"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 25
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="HUD/Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Money : 0"
+
+[node name="ShopButton" type="Button" parent="HUD/Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 25
+text = "Shop"
+
+[node name="ShopContainer" type="MarginContainer" parent="HUD/Control/MarginContainer" node_paths=PackedStringArray("money_text")]
+visible = false
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 75
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 75
+script = ExtResource("11_7apmo")
+money_text = NodePath("../Label")
+
+[node name="ItemList" type="ItemList" parent="HUD/Control/MarginContainer/ShopContainer"]
+layout_mode = 2
+
+[connection signal="pressed" from="HUD/Control/MarginContainer/ShopButton" to="HUD/Control/MarginContainer/ShopContainer" method="_on_shop_button_pressed"]
+[connection signal="toggled" from="HUD/Control/MarginContainer/ShopButton" to="HUD/Control/MarginContainer/ShopContainer" method="_on_shop_button_toggled"]
+[connection signal="item_clicked" from="HUD/Control/MarginContainer/ShopContainer/ItemList" to="HUD/Control/MarginContainer/ShopContainer" method="_on_item_list_item_clicked"]

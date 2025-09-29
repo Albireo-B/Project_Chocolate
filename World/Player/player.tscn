@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmykmd4omhsnp"]
+
+[ext_resource type="ArrayMesh" uid="uid://bwi1wa2ju85fq" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/candle_lit.obj" id="1_u54fa"]
+
+[node name="Player" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+mesh = ExtResource("1_u54fa")

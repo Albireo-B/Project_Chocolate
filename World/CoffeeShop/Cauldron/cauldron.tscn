@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://b5a6bnocaw5y3" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/chest.obj" id="1_udnci"]
 [ext_resource type="Material" uid="uid://dvxnmkmc6pm0d" path="res://World/Ingredients/ingredient_outline.tres" id="2_nlhno"]
-[ext_resource type="Script" uid="uid://dwvcguisc5fwr" path="res://World/CoffeeShop/Cauldron/cauldron.gd" id="2_wks6j"]
+[ext_resource type="Script" uid="uid://dwvcguisc5fwr" path="res://World/CoffeeShop/Cauldron/Cauldron.gd" id="2_wks6j"]
 [ext_resource type="ArrayMesh" uid="uid://h5qcphvk53qv" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/plate.obj" id="4_s0d2p"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wks6j"]

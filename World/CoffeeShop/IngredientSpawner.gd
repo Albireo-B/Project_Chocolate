@@ -1,28 +1,20 @@
 extends Node3D
 
 @export var base_ingredient: PackedScene
-@export var ingredient_resources: Array[Ingredient]
 @export var spawn_points_holder: Node3D
 	
-func spawn_ingredient(ingredient_type: Ingredient.IngredientType):
-	var ingredient_resource = find_ingredient_resource(ingredient_type)
-	var ingredient_spawn = find_ingredient_spawn(ingredient_type)
-	if !ingredient_resource or !ingredient_spawn:
+func spawn_ingredient(ingredient: Ingredient):
+	var ingredient_spawn = find_ingredient_spawn(ingredient.ingredient_type)
+	if !ingredient_spawn:
 		return
 		
 	var ingredient_objet = base_ingredient.instantiate()
-	ingredient_objet.mesh_instance.mesh = ingredient_resource.mesh
+	ingredient_objet.mesh_instance.mesh = ingredient.mesh
 		
 	var object_collision_shape: CollisionShape3D = ingredient_objet.get_node(ingredient_objet.get_meta("collision_shape"))
 	object_collision_shape.shape = ingredient_objet.mesh_instance.mesh.create_convex_shape()
-	ingredient_objet.set_meta("ingredient_index", ingredient_resource.ingredient)
+	ingredient_objet.set_meta("ingredient_index", ingredient.ingredient_type)
 	ingredient_spawn.add_child(ingredient_objet)
-
-func find_ingredient_resource(ingredient: Ingredient.IngredientType):
-	for resource in ingredient_resources:
-		if resource.ingredient == ingredient:
-			return resource
-	return null
 	
 func find_ingredient_spawn(ingredient: Ingredient.IngredientType):
 	for spawn in spawn_points_holder.get_children():
