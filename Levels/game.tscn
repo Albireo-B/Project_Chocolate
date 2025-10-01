@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://8wvpku4ismju"]
+[gd_scene load_steps=17 format=3 uid="uid://8wvpku4ismju"]
 
 [ext_resource type="PackedScene" uid="uid://by8a4o25clf2b" path="res://World/CoffeeShop/coffee_shop.tscn" id="1_72uep"]
 [ext_resource type="PackedScene" uid="uid://dg30g8cqn2crh" path="res://World/WorldEnv/world_environment.tscn" id="2_b2ers"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cmykmd4omhsnp" path="res://World/Player/player.tscn" id="9_qe8hq"]
 [ext_resource type="Script" uid="uid://bgto5xgh4b1n4" path="res://World/Player/Player.gd" id="10_fiyor"]
 [ext_resource type="Script" uid="uid://cxv0wnptfby86" path="res://World/Shop/Shop.gd" id="11_7apmo"]
+[ext_resource type="Script" uid="uid://egr6d63y3mg3" path="res://World/QuestManager/QuestManager.gd" id="15_40bat"]
+[ext_resource type="PackedScene" uid="uid://bguppshvr0t1d" path="res://World/QuestManager/Clients/client_base.tscn" id="16_vt8gr"]
 
 [node name="GameScene" type="Node3D"]
 
@@ -36,6 +38,7 @@ drop_target_holder = NodePath("../CoffeeShop")
 
 [node name="RecipeManager" type="Node3D" parent="." node_paths=PackedStringArray("ingredient_spawner")]
 script = ExtResource("4_5ubxa")
+starting_ingredients = Array[ExtResource("5_40bat")]([ExtResource("7_nt8yr")])
 all_ingredients = Array[ExtResource("5_40bat")]([ExtResource("6_vt8gr"), ExtResource("7_nt8yr")])
 all_recipes = Array[ExtResource("5_ev4ff")]([ExtResource("6_xfsjo"), ExtResource("7_qe8hq"), ExtResource("8_xfsjo")])
 ingredient_spawner = NodePath("../CoffeeShop")
@@ -96,6 +99,18 @@ money_text = NodePath("../Label")
 
 [node name="ItemList" type="ItemList" parent="HUD/Control/MarginContainer/ShopContainer"]
 layout_mode = 2
+
+[node name="QuestManager" type="Node3D" parent="." node_paths=PackedStringArray("recipe_manager")]
+script = ExtResource("15_40bat")
+recipe_manager = NodePath("../RecipeManager")
+client_base_object = ExtResource("16_vt8gr")
+client_time_to_pos = 3.0
+
+[node name="ClientStartPos" type="Marker3D" parent="QuestManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.469, 0, 2.149)
+
+[node name="ClientEndPos" type="Marker3D" parent="QuestManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.538, 0, 2.207)
 
 [connection signal="pressed" from="HUD/Control/MarginContainer/ShopButton" to="HUD/Control/MarginContainer/ShopContainer" method="_on_shop_button_pressed"]
 [connection signal="toggled" from="HUD/Control/MarginContainer/ShopButton" to="HUD/Control/MarginContainer/ShopContainer" method="_on_shop_button_toggled"]

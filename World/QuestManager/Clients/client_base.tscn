@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bguppshvr0t1d"]
+
+[ext_resource type="ArrayMesh" uid="uid://c8idv81ng7cdb" path="res://Assets/3D/KayKit_DungeonRemastered_1.1_FREE/obj/pillar.obj" id="1_pqnta"]
+
+[node name="Client" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_pqnta")
+
+[node name="RecipeText" type="Label3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 4.841831, 0)
+text = "HELP"
+font_size = 60

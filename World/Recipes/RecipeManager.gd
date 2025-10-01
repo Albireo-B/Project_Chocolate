@@ -1,6 +1,8 @@
 class_name RecipeManager
 extends Node3D
 
+@export var starting_ingredients: Array[Ingredient]
+
 @export var all_ingredients: Array[Ingredient]
 @export var all_recipes: Array[Recipe]
 
@@ -12,6 +14,8 @@ func _ready():
 	SignalManager.recipe_ended.connect(_on_cauldron_recipe_ended)
 	SignalManager.ingredient_unlocked.connect(_on_ingredient_unlocked)
 	call_deferred("init")
+	for ingredient in starting_ingredients:
+		unlock_ingredient(ingredient)
 
 func init():
 	SignalManager.shop_ingredients_updated.emit(all_ingredients.filter(func(ingredient): return !unlocked_ingredients.has(ingredient)))
@@ -26,6 +30,7 @@ func update_recipes():
 			unlocked_recipes.append(recipe)
 			
 func _on_cauldron_recipe_ended(ingredients: Array[Ingredient.IngredientType]):
+	# Following part (unlocked_recipes check) only used for debugging
 	var recipe_index: int = -1
 	for recipe in unlocked_recipes:
 		recipe.ingredients.sort()
@@ -33,7 +38,6 @@ func _on_cauldron_recipe_ended(ingredients: Array[Ingredient.IngredientType]):
 		if recipe.ingredients == ingredients:
 			recipe_index = unlocked_recipes.find(recipe)
 			print("Found recipe : " + recipe.name + " with  index : " + str(recipe_index))
-			SignalManager.recipe_successful.emit()
 			break
 			
 	if recipe_index == -1:
