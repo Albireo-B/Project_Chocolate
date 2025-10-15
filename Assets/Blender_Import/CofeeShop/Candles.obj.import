@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://v5i5c5bti3yc"
+path="res://.godot/imported/Candles.obj-3283c14f1841b0ee873dc3df5a6c3cf4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Candles.obj-3283c14f1841b0ee873dc3df5a6c3cf4.mesh"]
+
+source_file="res://Assets/Blender_Import/CofeeShop/Candles.obj"
+dest_files=["res://.godot/imported/Candles.obj-3283c14f1841b0ee873dc3df5a6c3cf4.mesh", "res://.godot/imported/Candles.obj-3283c14f1841b0ee873dc3df5a6c3cf4.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
