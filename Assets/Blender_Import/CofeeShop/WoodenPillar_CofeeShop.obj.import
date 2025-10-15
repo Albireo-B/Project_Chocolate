@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bpemx5258lwk0"
+path="res://.godot/imported/WoodenPillar_CofeeShop.obj-de6e32558f5ccf3a57ef827004b1e7e0.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WoodenPillar_CofeeShop.obj-de6e32558f5ccf3a57ef827004b1e7e0.mesh"]
+
+source_file="res://Assets/Blender_Import/CofeeShop/WoodenPillar_CofeeShop.obj"
+dest_files=["res://.godot/imported/WoodenPillar_CofeeShop.obj-de6e32558f5ccf3a57ef827004b1e7e0.mesh", "res://.godot/imported/WoodenPillar_CofeeShop.obj-de6e32558f5ccf3a57ef827004b1e7e0.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -1,0 +1,60 @@
+[gd_scene load_steps=17 format=3 uid="uid://whqu6mn7vp5m"]
+
+[ext_resource type="Material" uid="uid://bjg7cdydpk5wu" path="res://Assets/Materials/Wood_Dark.tres" id="1_ukio8"]
+[ext_resource type="PackedScene" uid="uid://1cgv6yybdts5" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Walls_Intern.glb" id="3_l8van"]
+[ext_resource type="ArrayMesh" uid="uid://bpemx5258lwk0" path="res://Assets/Blender_Import/CofeeShop/WoodenPillar_CofeeShop.obj" id="3_uq1jj"]
+[ext_resource type="PackedScene" uid="uid://buuhawwcesdya" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Walls_Extern.glb" id="4_l8van"]
+[ext_resource type="ArrayMesh" uid="uid://bkih76nn6dvoe" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_DecoShelf.obj" id="5_vpsn6"]
+[ext_resource type="ArrayMesh" uid="uid://cvlpqfwousrix" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_IgredientShelf.obj" id="6_02rrd"]
+[ext_resource type="Material" uid="uid://b07aa7ivx1kti" path="res://Assets/Materials/Pots.tres" id="6_3k7ud"]
+[ext_resource type="ArrayMesh" uid="uid://brmjwqmneeasf" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Pots.obj" id="7_02rrd"]
+[ext_resource type="PackedScene" uid="uid://dginhjw5w5vy7" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Desk.glb" id="8_ue54n"]
+[ext_resource type="PackedScene" uid="uid://crfhxp14v4yt2" path="res://Assets/Blender_Import/World/Ground_Plane.glb" id="9_ugrjp"]
+[ext_resource type="Material" uid="uid://icoaexo3ejgm" path="res://Assets/Materials/GiantBooks.tres" id="11_6t1as"]
+[ext_resource type="ArrayMesh" uid="uid://qf68uv3mcabu" path="res://Assets/Blender_Import/World/GiantBooks.obj" id="12_jimgs"]
+[ext_resource type="Material" uid="uid://uhrgoehg8ba3" path="res://Assets/Materials/Grass.tres" id="13_db2gd"]
+[ext_resource type="ArrayMesh" uid="uid://dl0kdj2l8wp33" path="res://Assets/Blender_Import/World/Grass.obj" id="13_jimgs"]
+[ext_resource type="ArrayMesh" uid="uid://ct3m4otiichrq" path="res://Assets/Blender_Import/World/Wood_Fences.obj" id="15_03hlk"]
+[ext_resource type="ArrayMesh" uid="uid://crsm07d6imubq" path="res://Assets/Blender_Import/World/Bridge.obj" id="16_k7gne"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WoodenPillarCofeeShop" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ukio8")
+mesh = ExtResource("3_uq1jj")
+
+[node name="CofeeShop_Walls_Intern" parent="." instance=ExtResource("3_l8van")]
+
+[node name="CofeeShopDecoShelf" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ukio8")
+mesh = ExtResource("5_vpsn6")
+
+[node name="CofeeShopIgredientShelf" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ukio8")
+mesh = ExtResource("6_02rrd")
+
+[node name="CofeeShopPots" type="MeshInstance3D" parent="."]
+material_override = ExtResource("6_3k7ud")
+mesh = ExtResource("7_02rrd")
+
+[node name="CofeeShop_Walls_Extern" parent="." instance=ExtResource("4_l8van")]
+
+[node name="CofeeShop_Desk" parent="." instance=ExtResource("8_ue54n")]
+
+[node name="Ground_Plane" parent="." instance=ExtResource("9_ugrjp")]
+
+[node name="GiantBooks" type="MeshInstance3D" parent="."]
+material_override = ExtResource("11_6t1as")
+mesh = ExtResource("12_jimgs")
+
+[node name="Grass" type="MeshInstance3D" parent="."]
+material_override = ExtResource("13_db2gd")
+mesh = ExtResource("13_jimgs")
+
+[node name="WoodFences" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ukio8")
+mesh = ExtResource("15_03hlk")
+
+[node name="Bridge" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ukio8")
+mesh = ExtResource("16_k7gne")

@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b07aa7ivx1kti"]
+
+[ext_resource type="Texture2D" uid="uid://0c07kosjyhdi" path="res://Assets/Materials/Candle_Pots.png" id="1_e0du7"]
+
+[resource]
+cull_mode = 2
+albedo_texture = ExtResource("1_e0du7")
+metallic_specular = 0.0
+ao_enabled = true
+ao_light_affect = 1.0

@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkih76nn6dvoe"
+path="res://.godot/imported/CofeeShop_DecoShelf.obj-a0ab45686e2bb5705a6c2f17a0383666.mesh"
+
+[deps]
+
+files=["res://.godot/imported/CofeeShop_DecoShelf.obj-a0ab45686e2bb5705a6c2f17a0383666.mesh"]
+
+source_file="res://Assets/Blender_Import/CofeeShop/CofeeShop_DecoShelf.obj"
+dest_files=["res://.godot/imported/CofeeShop_DecoShelf.obj-a0ab45686e2bb5705a6c2f17a0383666.mesh", "res://.godot/imported/CofeeShop_DecoShelf.obj-a0ab45686e2bb5705a6c2f17a0383666.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
