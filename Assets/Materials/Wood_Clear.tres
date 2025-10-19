@@ -7,4 +7,3 @@ cull_mode = 2
 albedo_texture = ExtResource("1_qd17v")
 metallic_specular = 0.0
 ao_enabled = true
-ao_light_affect = 1.0

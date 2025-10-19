@@ -4,10 +4,11 @@
 
 [resource]
 transparency = 2
-alpha_scissor_threshold = 1.0
+alpha_scissor_threshold = 0.0
 alpha_antialiasing_mode = 1
 alpha_antialiasing_edge = 0.3
 cull_mode = 2
+depth_draw_mode = 1
 albedo_texture = ExtResource("2_8p0in")
 metallic_specular = 0.0
 emission = Color(0.5228282, 0.16986284, 0, 1)

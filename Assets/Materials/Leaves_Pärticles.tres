@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bublj41y21g0k"]
+
+[ext_resource type="Texture2D" uid="uid://bs7d7p4cby50q" path="res://Assets/Materials/AutumnLeave.png" id="1_jxtoj"]
+
+[resource]
+transparency = 3
+alpha_hash_scale = 1.0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 1.0
+cull_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_jxtoj")
+metallic_specular = 0.0
+emission = Color(0.5228282, 0.16986284, 0, 1)
+emission_energy_multiplier = 0.1
+disable_receive_shadows = true

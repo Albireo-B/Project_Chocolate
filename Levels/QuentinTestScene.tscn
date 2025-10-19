@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://whqu6mn7vp5m"]
+[gd_scene load_steps=29 format=3 uid="uid://whqu6mn7vp5m"]
 
 [ext_resource type="Material" uid="uid://bjg7cdydpk5wu" path="res://Assets/Materials/Wood_Dark.tres" id="1_ukio8"]
 [ext_resource type="PackedScene" uid="uid://1cgv6yybdts5" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Walls_Intern.glb" id="3_l8van"]
@@ -19,6 +19,7 @@
 [ext_resource type="ArrayMesh" uid="uid://v5i5c5bti3yc" path="res://Assets/Blender_Import/CofeeShop/Candles.obj" id="17_k7gne"]
 [ext_resource type="Material" uid="uid://clec2lui735c2" path="res://Assets/Materials/Leaves_Shadows.tres" id="18_3cm5n"]
 [ext_resource type="ArrayMesh" uid="uid://b5e7s34b81h1o" path="res://Assets/Blender_Import/World/LeavesShadows.obj" id="18_pfj8i"]
+[ext_resource type="Material" uid="uid://bublj41y21g0k" path="res://Assets/Materials/Leaves_Pärticles.tres" id="20_2e5mw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03hlk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -37,6 +38,10 @@ tonemap_mode = 3
 tonemap_exposure = 1.82
 tonemap_white = 0.43
 ssao_enabled = true
+ssao_radius = 4.9
+ssao_intensity = 16.0
+ssao_power = 0.31533736
+ssao_horizon = 0.16
 glow_enabled = true
 glow_intensity = 2.36
 glow_strength = 1.16
@@ -45,10 +50,35 @@ volumetric_fog_density = 0.7321
 volumetric_fog_length = 27.24
 volumetric_fog_detail_spread = 0.5
 
+[sub_resource type="Curve" id="Curve_3cm5n"]
+_data = [Vector2(0, 0.8393896), 0.0, 0.46098176, 0, 0, Vector2(1, 0.14970946), -2.5011966, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_2e5mw"]
+curve = SubResource("Curve_3cm5n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3cm5n"]
+lifetime_randomness = 0.5
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(2, 1.125, 0.05)
+gravity = Vector3(0, -1, 0)
+linear_accel_min = -2.2351742e-06
+linear_accel_max = 0.49999776
+scale_min = 0.14999999
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_2e5mw")
+turbulence_enabled = true
+turbulence_noise_scale = 0.2
+
+[sub_resource type="QuadMesh" id="QuadMesh_2e5mw"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_l8aag"]
+
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682, 3.659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.54, 0.682, 3.659)
 fov = 35.0
 near = 0.001
 far = 20.0
@@ -183,7 +213,7 @@ omni_attenuation = 0.847
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CofeeShop/ShopLight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8592832, 2.2995453)
-light_intensity_lumens = 10.0
+light_intensity_lumens = 3.0
 light_color = Color(0.91165394, 0.7438483, 0.65258586, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -194,7 +224,7 @@ spot_angle = 89.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="CofeeShop/ShopLight"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.9786057, 0.6215286)
-light_intensity_lumens = 10.0
+light_intensity_lumens = 3.0
 light_color = Color(0.91165394, 0.7438483, 0.65258586, 1)
 light_energy = 1.977
 shadow_bias = 0.01
@@ -233,9 +263,15 @@ mesh = ExtResource("18_pfj8i")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("18_3cm5n")
 
+[node name="LeavesShadows2" type="MeshInstance3D" parent="Exterior"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.281455)
+material_override = ExtResource("18_3cm5n")
+mesh = ExtResource("18_pfj8i")
+surface_material_override/0 = ExtResource("18_3cm5n")
+
 [node name="SunLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9704265, 1.180584e-08, 0.24139689, -0.22691083, -0.3412, 0.9121919, 0.082364626, -0.93999076, -0.3311095, 4.2448273, 3.9547641, 0)
-light_intensity_lux = 2.0
+light_intensity_lux = 5.0
 light_color = Color(0.90327126, 0.8862428, 0.88595545, 1)
 light_energy = 0.5
 light_specular = 0.0
@@ -247,9 +283,29 @@ shadow_opacity = 0.56
 shadow_blur = 0.523
 
 [node name="FrontLight" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.254144, 4.470106)
+transform = Transform3D(1, 0, 0, 0, 0.78046316, 0.62520176, 0, -0.62520176, 0.78046316, 0, 3.8388913, 4.470106)
 light_intensity_lux = 5.0
-light_color = Color(0.83026695, 0.5224757, 0.3632511, 1)
+light_color = Color(0.6594797, 0.65420437, 0.6398623, 1)
 light_energy = 0.1
 shadow_bias = 0.01
 shadow_normal_bias = 5.0
+
+[node name="LeavesFalling" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 4.6432233, 1.8996493, 1.2490175)
+material_overlay = ExtResource("20_2e5mw")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 50
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_3cm5n")
+draw_pass_1 = SubResource("QuadMesh_2e5mw")
+
+[node name="LeavesFalling2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.285717, 1.8376288, 0.82707334)
+material_overlay = ExtResource("20_2e5mw")
+cast_shadow = 0
+ignore_occlusion_culling = true
+amount = 50
+lifetime = 3.0
+process_material = SubResource("ParticleProcessMaterial_3cm5n")
+draw_pass_1 = SubResource("QuadMesh_l8aag")
