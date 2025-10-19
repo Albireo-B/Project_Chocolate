@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://whqu6mn7vp5m"]
+[gd_scene load_steps=23 format=3 uid="uid://whqu6mn7vp5m"]
 
 [ext_resource type="Material" uid="uid://bjg7cdydpk5wu" path="res://Assets/Materials/Wood_Dark.tres" id="1_ukio8"]
 [ext_resource type="PackedScene" uid="uid://1cgv6yybdts5" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Walls_Intern.glb" id="3_l8van"]
@@ -17,6 +17,8 @@
 [ext_resource type="ArrayMesh" uid="uid://ct3m4otiichrq" path="res://Assets/Blender_Import/World/Wood_Fences.obj" id="15_03hlk"]
 [ext_resource type="ArrayMesh" uid="uid://crsm07d6imubq" path="res://Assets/Blender_Import/World/Bridge.obj" id="16_k7gne"]
 [ext_resource type="ArrayMesh" uid="uid://v5i5c5bti3yc" path="res://Assets/Blender_Import/CofeeShop/Candles.obj" id="17_k7gne"]
+[ext_resource type="Material" uid="uid://clec2lui735c2" path="res://Assets/Materials/Leaves_Shadows.tres" id="18_3cm5n"]
+[ext_resource type="ArrayMesh" uid="uid://b5e7s34b81h1o" path="res://Assets/Blender_Import/World/LeavesShadows.obj" id="18_pfj8i"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03hlk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -28,15 +30,28 @@ sky_material = SubResource("ProceduralSkyMaterial_03hlk")
 [sub_resource type="Environment" id="Environment_pfj8i"]
 background_mode = 1
 background_color = Color(0.22439504, 0.15521598, 0.12921575, 1)
-background_energy_multiplier = 1.8
+background_energy_multiplier = 0.85
+background_intensity = 2.0
 sky = SubResource("Sky_k7gne")
-tonemap_mode = 2
+tonemap_mode = 3
+tonemap_exposure = 1.82
+tonemap_white = 0.43
+ssao_enabled = true
+glow_enabled = true
+glow_intensity = 2.36
+glow_strength = 1.16
+glow_bloom = 0.03
+volumetric_fog_density = 0.7321
+volumetric_fog_length = 27.24
+volumetric_fog_detail_spread = 0.5
 
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.37771928, 0.68195784, 3.6594222)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682, 3.659)
 fov = 35.0
+near = 0.001
+far = 20.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pfj8i")
@@ -80,6 +95,7 @@ skeleton = NodePath("../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5448581, 1.439605, -0.35501385)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -90,6 +106,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5088967, 1.439605, -0.40810335)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -100,6 +117,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27910733, 1.4869382, -0.3843714)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -110,6 +128,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D4" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9043962, 1.3166381, -0.326401)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -120,6 +139,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D8" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.449729, 0.94480157, -0.3565511)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -130,6 +150,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D5" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5691076, 0.39578873, 1.8309524)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -140,6 +161,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D6" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37329018, 0.35755828, 1.763498)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -150,6 +172,7 @@ omni_attenuation = 0.847
 
 [node name="OmniLight3D7" type="OmniLight3D" parent="CofeeShop/ShopLight/CandlesLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9759737, 0.3012808, 0.41483933)
+light_intensity_lumens = 30.0
 light_color = Color(0.8184724, 0.48971695, 0.19728237, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -160,6 +183,7 @@ omni_attenuation = 0.847
 
 [node name="SpotLight3D" type="SpotLight3D" parent="CofeeShop/ShopLight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8592832, 2.2995453)
+light_intensity_lumens = 10.0
 light_color = Color(0.91165394, 0.7438483, 0.65258586, 1)
 shadow_enabled = true
 shadow_bias = 0.01
@@ -170,6 +194,7 @@ spot_angle = 89.0
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="CofeeShop/ShopLight"]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 1.9786057, 0.6215286)
+light_intensity_lumens = 10.0
 light_color = Color(0.91165394, 0.7438483, 0.65258586, 1)
 light_energy = 1.977
 shadow_bias = 0.01
@@ -202,14 +227,28 @@ material_override = ExtResource("1_ukio8")
 mesh = ExtResource("16_k7gne")
 skeleton = NodePath("../..")
 
+[node name="LeavesShadows" type="MeshInstance3D" parent="Exterior"]
+material_override = ExtResource("18_3cm5n")
+mesh = ExtResource("18_pfj8i")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("18_3cm5n")
+
 [node name="SunLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.9704265, 1.180584e-08, 0.24139689, -0.22691083, -0.3412, 0.9121919, 0.082364626, -0.93999076, -0.3311095, 4.2448273, 3.9547641, 0)
+light_intensity_lux = 2.0
+light_color = Color(0.90327126, 0.8862428, 0.88595545, 1)
+light_energy = 0.5
+light_specular = 0.0
+light_bake_mode = 1
 shadow_enabled = true
-shadow_bias = 0.01
-shadow_normal_bias = 5.0
+shadow_bias = 0.0
+shadow_normal_bias = 10.0
+shadow_opacity = 0.56
+shadow_blur = 0.523
 
 [node name="FrontLight" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.254144, 4.470106)
+light_intensity_lux = 5.0
 light_color = Color(0.83026695, 0.5224757, 0.3632511, 1)
 light_energy = 0.1
 shadow_bias = 0.01

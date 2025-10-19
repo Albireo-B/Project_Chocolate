@@ -1,0 +1,15 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://clec2lui735c2"]
+
+[ext_resource type="Texture2D" uid="uid://d0avcatlciq6s" path="res://Assets/Materials/GianTreeFolliage.png" id="2_8p0in"]
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 1.0
+alpha_antialiasing_mode = 1
+alpha_antialiasing_edge = 0.3
+cull_mode = 2
+albedo_texture = ExtResource("2_8p0in")
+metallic_specular = 0.0
+emission = Color(0.5228282, 0.16986284, 0, 1)
+emission_energy_multiplier = 0.1
+disable_receive_shadows = true

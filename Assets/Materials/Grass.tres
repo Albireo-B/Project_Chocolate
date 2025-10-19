@@ -4,13 +4,14 @@
 
 [resource]
 transparency = 2
-alpha_scissor_threshold = 0.248
-alpha_antialiasing_mode = 0
-cull_mode = 2
+alpha_scissor_threshold = 0.649
+alpha_antialiasing_mode = 2
+alpha_antialiasing_edge = 1.0
 albedo_texture = ExtResource("1_e0jv7")
 metallic_specular = 0.0
 emission_enabled = true
 emission = Color(0.5228282, 0.16986284, 0, 1)
 emission_energy_multiplier = 0.1
+emission_intensity = 1.0
 emission_texture = ExtResource("1_e0jv7")
 ao_enabled = true
