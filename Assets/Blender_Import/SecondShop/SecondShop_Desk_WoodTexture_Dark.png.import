@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://dw0moue2cu7sl"
+path.s3tc="res://.godot/imported/SecondShop_Desk_WoodTexture_Dark.png-f8d514a3d827a10a8b0a3220426105da.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c15b4c790a8e6c49e71ef8fe3776ca5a"
+}
+
+[deps]
+
+source_file="res://Assets/Blender_Import/SecondShop/SecondShop_Desk_WoodTexture_Dark.png"
+dest_files=["res://.godot/imported/SecondShop_Desk_WoodTexture_Dark.png-f8d514a3d827a10a8b0a3220426105da.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0
