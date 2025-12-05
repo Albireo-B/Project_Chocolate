@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bge3qmxih7bnk"
+path="res://.godot/imported/WaterPlane_Top.obj-9c6fbecb6df9a78c3868179963f5741c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/WaterPlane_Top.obj-9c6fbecb6df9a78c3868179963f5741c.mesh"]
+
+source_file="res://Assets/Blender_Import/World/WaterPlane_Top.obj"
+dest_files=["res://.godot/imported/WaterPlane_Top.obj-9c6fbecb6df9a78c3868179963f5741c.mesh", "res://.godot/imported/WaterPlane_Top.obj-9c6fbecb6df9a78c3868179963f5741c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

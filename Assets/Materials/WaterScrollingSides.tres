@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://ns1a7wvqxgpq"]
+
+[ext_resource type="Texture2D" uid="uid://c4i0mn7t0kfrf" path="res://Assets/Materials/Sides.png" id="1_8n2dm"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 2
+albedo_texture = ExtResource("1_8n2dm")
+metallic_specular = 0.0
+emission = Color(0.13277704, 0.33867043, 0.33751574, 1)
+emission_intensity = 0.3
+uv1_scale = Vector3(1.5, 1, 1)
+uv1_offset = Vector3(-0.245, -0.655, 0)

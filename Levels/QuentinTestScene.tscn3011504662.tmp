@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://whqu6mn7vp5m"]
+[gd_scene load_steps=36 format=3 uid="uid://whqu6mn7vp5m"]
 
 [ext_resource type="Material" uid="uid://bjg7cdydpk5wu" path="res://Assets/Materials/Wood_Dark.tres" id="1_ukio8"]
 [ext_resource type="PackedScene" uid="uid://1cgv6yybdts5" path="res://Assets/Blender_Import/CofeeShop/CofeeShop_Walls_Intern.glb" id="3_l8van"]
@@ -26,10 +26,8 @@
 [ext_resource type="Material" uid="uid://bublj41y21g0k" path="res://Assets/Materials/Leaves_Pärticles.tres" id="20_2e5mw"]
 [ext_resource type="Material" uid="uid://cbjrwhyi2v0mx" path="res://Assets/Materials/WaterScrolling.tres" id="24_fnahk"]
 [ext_resource type="ArrayMesh" uid="uid://bge3qmxih7bnk" path="res://Assets/Blender_Import/World/WaterPlane_Top.obj" id="24_qm2ew"]
-[ext_resource type="Script" uid="uid://rhj0vtceeoaw" path="res://Levels/water_plane_Side.gd" id="26_6n3wb"]
 [ext_resource type="Material" uid="uid://37jq0pv2u2yj" path="res://Assets/Materials/WaterBot.tres" id="26_gsdru"]
 [ext_resource type="Script" uid="uid://cr4grkvftei2g" path="res://Levels/water_plane_top.gd" id="26_srwsb"]
-[ext_resource type="Material" uid="uid://ns1a7wvqxgpq" path="res://Assets/Materials/WaterScrollingSides.tres" id="28_kwudu"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_03hlk"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -87,13 +85,10 @@ material = ExtResource("20_2e5mw")
 [node name="World" type="Node3D"]
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682, 3.659)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6269827, 0.682, 3.659)
 fov = 35.0
 near = 0.001
 far = 20.0
-
-[node name="RayCast3D" type="RayCast3D" parent="Camera3D"]
-collide_with_areas = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_pfj8i")
@@ -318,22 +313,12 @@ material_override = ExtResource("18_3cm5n")
 mesh = ExtResource("18_pfj8i")
 surface_material_override/0 = ExtResource("18_3cm5n")
 
-[node name="WaterPlaneSide" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01, 0)
-sorting_offset = 0.19
-cast_shadow = 0
-mesh = ExtResource("24_qm2ew")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("28_kwudu")
-script = ExtResource("26_6n3wb")
-
 [node name="WaterPlaneTop" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.045, 0.005)
-sorting_offset = 0.015
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.005)
+material_override = ExtResource("24_fnahk")
 cast_shadow = 0
 mesh = ExtResource("24_qm2ew")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("24_fnahk")
 script = ExtResource("26_srwsb")
 
 [node name="WaterPlaneBot" type="MeshInstance3D" parent="World"]

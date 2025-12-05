@@ -8,3 +8,5 @@ albedo_texture = ExtResource("1_myod0")
 metallic_specular = 0.0
 ao_enabled = true
 ao_light_affect = 1.0
+refraction_enabled = true
+refraction_scale = 0.0

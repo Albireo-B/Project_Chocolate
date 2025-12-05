@@ -19,10 +19,10 @@ func _process(delta):
 	if light_energy < 0.0:
 		sun.light_energy = 0.0
 		sun.shadow_enabled = false
-		moon.light_energy = lerpf(0.1, 2.0, -light_energy)
+		moon.light_energy = lerpf(0.1, 0.2, -light_energy)
 		moon.shadow_enabled = true
 	else:
-		sun.light_energy = lerpf(0.1, 2.0, light_energy)
+		sun.light_energy = lerpf(0.1, 0.2, light_energy)
 		sun.shadow_enabled = true
 		moon.light_energy = 0.0
 		moon.shadow_enabled = false
